@@ -1,4 +1,4 @@
 class EmployeeRole < ApplicationRecord
   belongs_to :role
-  belongs_to :emloyee
+  belongs_to :employee
 end

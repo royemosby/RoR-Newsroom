@@ -4,7 +4,7 @@ class CreateArticles < ActiveRecord::Migration[6.1]
       t.integer :employee_id, null: true
       t.string :title
       t.text :content
-      t.string :status
+      t.string :status, default: "new"
 
       t.timestamps
     end

@@ -10,15 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_23_203025) do
+ActiveRecord::Schema.define(version: 2021_04_26_105140) do
 
-  create_table "article_revisions", force: :cascade do |t|
-    t.text "content"
-    t.integer "reviewer_id"
+  create_table "article_tags", force: :cascade do |t|
+    t.integer "tag_id", null: false
     t.integer "article_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["article_id"], name: "index_article_revisions_on_article_id"
+    t.index ["article_id"], name: "index_article_tags_on_article_id"
+    t.index ["tag_id"], name: "index_article_tags_on_tag_id"
+  end
+
+  create_table "article_updates", force: :cascade do |t|
+    t.integer "updater_id"
+    t.integer "article_id", null: false
+    t.text "content"
+    t.string "update_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_article_updates_on_article_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -28,6 +38,15 @@ ActiveRecord::Schema.define(version: 2021_04_23_203025) do
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "editor_revisions", force: :cascade do |t|
+    t.text "content"
+    t.integer "reviewer_id"
+    t.integer "article_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_editor_revisions_on_article_id"
   end
 
   create_table "employee_roles", force: :cascade do |t|
@@ -54,7 +73,16 @@ ActiveRecord::Schema.define(version: 2021_04_23_203025) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "article_revisions", "articles"
+  create_table "tags", force: :cascade do |t|
+    t.string "tag"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "article_tags", "articles"
+  add_foreign_key "article_tags", "tags"
+  add_foreign_key "article_updates", "articles"
+  add_foreign_key "editor_revisions", "articles"
   add_foreign_key "employee_roles", "employees"
   add_foreign_key "employee_roles", "roles"
 end

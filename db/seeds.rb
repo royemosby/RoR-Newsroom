@@ -6,8 +6,8 @@ intern = Employee.create!(first_name: "larry", last_name: "grotch", title: "news
 
 #articles
 
-Article.create!(title: "This one's a floater", content: Faker::Lorem.paragraphs(number: 3))
-Article.create!(title: "this one is assigned", employee_id: journalist.id, content: Faker::Lorem.paragraphs(number: 3))
+Article.create!(title: "This one's a floater", content: Faker::Lorem.paragraphs(number: 3).join)
+Article.create!(title: "this one is assigned", employee_id: journalist.id, content: Faker::Lorem.paragraphs(number: 3).join)
 
 #editor review
 
@@ -25,3 +25,5 @@ roles = ["create", "approve", "assign", "edit", "review", "publish"]
 
 #TODO roles need to be pre-populated into production database
 roles.each { |r| Role.create!(role: r)}
+
+#tags

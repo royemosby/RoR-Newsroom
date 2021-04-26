@@ -6,4 +6,18 @@ class Article < ApplicationRecord
   has_many :updaters, through: :article_updates, class_name: "Employee"
   has_many :article_tags
   has_many :tags, through: :article_tags
+
+  validates :title, length: {minimum: 3}
+  validate :content_length_min_ten_words
+
+  def content_length_min_ten_words
+    if content.present?
+      words = content.split(' ')
+      if words.length < 10
+        errors.add(:content, "Article content must be at least 10 words.")
+      end
+    else
+      errors.add(:content, "Article content cannot be empty.")
+    end
+  end
 end

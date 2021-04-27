@@ -1,0 +1,45 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+      <%= image_tag "ror_newsroom.svg", size: "100x100" %>
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      <%= link_to "Home", "/", class: "navbar-item" %>
+      <%= link_to "RoR Newsroom Team", employees_path, class: "navbar-item" %>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <%= link_to "Tags", tags_path, class: "navbar-item" %>
+          <a class="navbar-item">
+            About RoR Newsroom
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            Submit a lead
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <%= link_to "Staff Login", login_path, class: "button is-light" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

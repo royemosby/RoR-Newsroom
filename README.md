@@ -1,6 +1,6 @@
 # RoR Newsroom
 
-![RoR Newsroom Logo](README_assets/ror_newsroom.svg)
+![RoR Newsroom Logo](README_assets/ror-newsroom.jpg)
 
 ## TOC
 

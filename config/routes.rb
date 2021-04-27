@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :roles, except: [:show]
   resources :tags, only: [:index, :destroy]
   root to: "articles#index"
+  get "/login", to: "sessions#new", as: "login"
 end

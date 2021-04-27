@@ -1,0 +1,7 @@
+<h1>All Editor Revisions</h1>
+<% @editor_revisions.each do |rev| %>
+  <h2>Article: <%= rev.article.title %></h2>
+  <h2>Review comment by: <%= rev.reviewer.first_name %></h2>
+  <div><%= rev.content %></div>
+  <hr>
+<% end %>

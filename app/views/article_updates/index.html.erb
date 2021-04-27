@@ -1,0 +1,7 @@
+<h1>All Article Updates</h1>
+<% @article_updates.each do |update| %>
+  <h2>Update to: <%= update.article.title %></h2>
+  <h2>Update by: <%= update.updater.first_name %></h2>
+  <div><%= update.content %></div>
+  <hr>
+<% end %>

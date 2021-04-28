@@ -1,8 +1,6 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <%= image_tag "ror_newsroom.svg", size: "100x100" %>
-    </a>
+      <%= image_tag "ror_newsroom.svg", size: "150x150", class: "navbar-item" %>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
@@ -14,7 +12,7 @@
   <div class="navbar-menu">
     <div class="navbar-start">
       <%= link_to "Home", "/", class: "navbar-item" %>
-      <%= link_to "RoR Newsroom Team", employees_path, class: "navbar-item" %>
+      <%= link_to "RoR Newsroom Team", staff_index_path, class: "navbar-item" %>
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
@@ -38,6 +36,7 @@
       <div class="navbar-item">
         <div class="buttons">
           <% if session[:employee_id] %>
+          <%= link_to "Workspace", workspace_employee_path(session[:employee_id]), class: "button is-primary" %>
             <%= link_to "Log Out", logout_path, method: :post, class: "button is-light" %>
           <% else %>  
             <%= link_to "Staff Login", login_path, class: "button is-light" %>

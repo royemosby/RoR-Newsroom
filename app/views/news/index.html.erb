@@ -1,0 +1,5 @@
+<h1>All Articles</h1>
+
+<% @articles.each do |article| %>
+  <h2><%= link_to article.title, news_path(article) %></h2>
+<% end %>

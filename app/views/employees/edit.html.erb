@@ -1,1 +1,24 @@
-<h1>Employee Edit</h1>
+<h1 class="title">Employee Edit</h1>
+<%= form_with model: @employee do |f| %>
+  <div class="field">
+    <%= f.label :gh_name, "GitHub Name", class: "label" %>
+    <%= f.text_field :gh_name, class: "control" %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name, class: "label" %>
+    <%= f.text_field :first_name, class: "control" %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name, class: "label" %>
+    <%= f.text_field :last_name, class: "control" %>
+  </div>
+  <div class="field">
+    <%= f.label :title, class: "label" %>
+    <%= f.text_field :title, class: "control" %>
+  </div>
+  
+  <div class="is-grouped">
+    <%= f.submit "Update", class: "button is-link" %>
+    <%= link_to "Cancel", employee_path(@employee), class: "button is-link is-light" %>
+  </div>
+<% end %>

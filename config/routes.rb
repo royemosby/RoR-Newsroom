@@ -1,15 +1,23 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :article_updates
-  resources :articles
-  resources :editor_revisions
-  resources :employees
-  resources :roles, except: [:show]
-  resources :tags, only: [:index, :destroy]
 
-  root to: "articles#index"
+  resources :news, only: [:index, :show]
+  resources :staff, only: [:index, :show]
+  resources :tags, only: [:index, :show]
   
+  namespace :workspace do
+    resources :articles
+    resources :article_updates
+    resources :editor_revisions
+    resources :employees
+    resources :roles, except: [:show]
+    resources :tags, only: [:index, :destroy]
+    root to: "articles#index"
+  end
+  
+  post "/logout", to: "sessions#destroy", as: "logout"
   get "/login", to: "sessions#new", as: "login"
   get "/auth/github/callback" => "sessions#create"
-  post "/logout", to: "sessions#destroy", as: "logout"
+  root to: "news#index"
+  
 end

@@ -1,4 +1,4 @@
-class RolesController < ApplicationController
+class Workspace::RolesController < ApplicationController
 
   #TODO Roles actions: new, create, edit, update, destroy
   def index

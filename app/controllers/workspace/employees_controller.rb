@@ -1,4 +1,4 @@
-class EmployeesController < ApplicationController
+class Workspace::EmployeesController < ApplicationController
 
   #TODO Employee actions: new, create, edit, update, destroy
 

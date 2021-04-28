@@ -1,4 +1,4 @@
-class ArticlesController < ApplicationController
+class Workspace::ArticlesController < ApplicationController
 
   #TODO Article actions: new, create, edit, update, destroy
   #TODO How to handle article publishing view?

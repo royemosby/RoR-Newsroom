@@ -1,5 +1,5 @@
 <h1 class="title">Employee Edit</h1>
-<%= form_with model: @employee do |f| %>
+<%= form_with model: [:workspace, @employee] do |f| %>
   <div class="field">
     <%= f.label :gh_name, "GitHub Name", class: "label" %>
     <%= f.text_field :gh_name, class: "control" %>
@@ -19,6 +19,6 @@
   
   <div class="is-grouped">
     <%= f.submit "Update", class: "button is-link" %>
-    <%= link_to "Cancel", employee_path(@employee), class: "button is-link is-light" %>
+    <%= link_to "Cancel", workspace_employee_path(@employee), class: "button is-link is-light" %>
   </div>
 <% end %>

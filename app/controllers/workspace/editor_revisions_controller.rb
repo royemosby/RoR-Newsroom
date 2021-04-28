@@ -1,4 +1,4 @@
-class EditorRevisionsController < ApplicationController
+class Workspace::EditorRevisionsController < ApplicationController
 
   #TODO consider grouping editor revisions by editor and article. Could scope.
 

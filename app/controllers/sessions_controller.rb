@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   def new
     if session[:employee_id]
       @employee = Employee.find_by(id: session[:employee_id])
-      redirect_to employee_path(@employee), alert: "You are already logged on."
+      redirect_to workspace_employee_path(@employee), alert: "You are already logged on."
     end
   end
 
@@ -15,9 +15,9 @@ class SessionsController < ApplicationController
     end
     session[:employee_id] = @employee.id
     if @employee.first_name.nil? || @employee.last_name.nil
-      redirect_to edit_employee_path(@employee), alert: "Please complete your account registration form"
+      redirect_to edit_workspace_employee_path(@employee), alert: "Please complete your account registration form"
     else
-      redirect_to employee_path(@employee), alert: "Welcome, #{@employee.first_name}"
+      redirect_to workspace_employee_path(@employee), alert: "Welcome, #{@employee.first_name}"
     end
   end
 

@@ -1,0 +1,11 @@
+<%= form_with model: [:workspace, @article] do |f| %>
+  <div class="field">
+    <%= f.label :title, class: "label" %>
+    <%= f.text_field :title, class: "control" %>
+  </div>
+  <div class="field">
+    <%= f.label :content, class: "label" %>
+    <%= f.text_area :content, size: "100x30", class: "control" %>
+  </div>
+    <%= f.submit %>
+<% end %>

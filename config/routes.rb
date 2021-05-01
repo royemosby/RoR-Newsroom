@@ -6,10 +6,14 @@ Rails.application.routes.draw do
   resources :tags, only: [:index, :show]
   
   namespace :workspace do
-    resources :articles
+    resources :articles do
+      resources :editor_revisions, only: [:index]
+    end
     resources :article_updates
     resources :editor_revisions
-    resources :employees
+    resources :employees do
+      resources :articles, only: [:index]
+    end
     resources :roles, except: [:show]
     resources :tags, only: [:index, :destroy]
     root to: "articles#index"

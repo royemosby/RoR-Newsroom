@@ -1,8 +1,8 @@
 class NewsController < ApplicationController
 
+  #TODO Static helper to handle ABOUT and SUBMIT A LEAD
   def index
-    #TODO helper scope to published articles
-    @articles = Article.all
+    @articles = Article.published_articles
   end
 
   def show

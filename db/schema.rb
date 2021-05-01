@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_27_152718) do
+ActiveRecord::Schema.define(version: 2021_05_01_131834) do
 
   create_table "article_tags", force: :cascade do |t|
     t.integer "tag_id", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2021_04_27_152718) do
     t.string "gh_uid"
     t.string "gh_name"
     t.string "gh_email"
+    t.string "username"
   end
 
   create_table "roles", force: :cascade do |t|

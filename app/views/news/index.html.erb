@@ -2,4 +2,7 @@
 
 <% @articles.each do |article| %>
   <h2><%= link_to article.title, news_path(article) %></h2>
+  <h3><%= link_to full_name(article.employee), staff_path(article.employee) %></h3>
+  <div><%= excerpt(article) %></div>
+  <hr>
 <% end %>

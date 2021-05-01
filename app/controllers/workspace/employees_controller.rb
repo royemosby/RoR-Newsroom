@@ -25,7 +25,7 @@ class Workspace::EmployeesController < ApplicationController
   end
 
   def edit
-    if session[:employee_id] != params[:id]
+    if session[:employee_id] != params[:id].to_i
       redirect_to workspace_employees_path, alert: "You do not have permission to edit that account."
     end
   end
@@ -49,7 +49,7 @@ class Workspace::EmployeesController < ApplicationController
   end
 
   def self_modify
-    
+
   end
 
   def employee_params

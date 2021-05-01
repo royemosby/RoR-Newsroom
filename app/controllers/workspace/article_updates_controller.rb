@@ -10,6 +10,19 @@ class Workspace::ArticleUpdatesController < ApplicationController
 
   def show
   end
+
+  def new
+  end
+
+  def create
+  end
+
+  def edit
+  end
+
+  def update
+
+  end
   
   def find_update
     @article_update = ArticleUpdate.find(params[:id])

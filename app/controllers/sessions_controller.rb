@@ -4,24 +4,36 @@ class SessionsController < ApplicationController
     if session[:employee_id]
       @employee = Employee.find_by(id: session[:employee_id])
       redirect_to workspace_employee_path(@employee), alert: "You are already logged on."
+    else
+      @employee = Employee.new
     end
   end
 
-  #TODO create username/password option
   #strong params for create action
   def create
-  
-    @employee = Employee.find_or_create_by(gh_uid: auth['uid']) do |e|
-      e.gh_name = auth['info']['name']
-      e.gh_email = auth['info']['email']
-      e.password = ENV['OAUTH_USER_PASS'] #TODO change to secure_random
-    end
-    session[:employee_id] = @employee.id
-    if @employee.first_name.nil? || @employee.last_name.nil?
-      redirect_to edit_workspace_employee_path(@employee), alert: "Please complete your account registration form"
+    if params.has_key? :username
+      @employee = Employee.find_by(username: params[:username])
+      if @employee.authenticate(params[:password])
+        session[:employee_id] = @employee.id
+        redirect_to workspace_employee_path(@employee)
+      else
+        redirect_to "/login", alert: "Username and password did not match."
+      end
     else
-      redirect_to workspace_employee_path(@employee), alert: "Welcome, #{@employee.first_name}"
+      #if params[:username] does not exist, assume GH login
+      @employee = Employee.find_or_create_by(gh_uid: auth['uid']) do |e|
+        e.username = auth['info']['nickname']
+        e.gh_email = auth['info']['email']
+        e.password = ENV['OAUTH_USER_PASS'] #TODO change to secure_random
+      end
+      session[:employee_id] = @employee.id
+      if @employee.first_name.nil? || @employee.last_name.nil?
+        redirect_to edit_workspace_employee_path(@employee), alert: "Please complete your account registration form"
+      else
+        redirect_to workspace_employee_path(@employee), alert: "Welcome, #{@employee.first_name}"
+      end
     end
+
   end
 
   def destroy

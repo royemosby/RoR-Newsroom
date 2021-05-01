@@ -7,8 +7,15 @@ class Article < ApplicationRecord
   has_many :article_tags
   has_many :tags, through: :article_tags
 
-  validates :title, length: {minimum: 3}
+  validates :title, length: {minimum: 2}
   validate :content_length_min_ten_words
+
+  scope :published_articles, -> {where("status IS ?", "published")}
+  scope :drafts, -> {where.not("status IS ?", "published")}
+
+
+  #TODO scope for published articles
+  #TODO scope for non-published articles
 
   def content_length_min_ten_words
     if content.present?

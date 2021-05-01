@@ -7,7 +7,11 @@ class Workspace::ArticlesController < ApplicationController
   before_action :find_article, only: [:show, :edit, :update]
 
   def index
-    @articles = Article.all
+    if params[:employee_id]
+      @articles = Employee.find(params[:employee_id]).articles
+    else
+      @articles = Article.all
+    end
   end
   
   def show

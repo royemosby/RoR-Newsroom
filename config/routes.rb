@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   
   post "/logout", to: "sessions#destroy", as: "logout"
   get "/login", to: "sessions#new", as: "login"
+  post "/login", to: "sessions#create", as: "username_pw_login"
   get "/auth/github/callback" => "sessions#create"
   root to: "news#index"
   

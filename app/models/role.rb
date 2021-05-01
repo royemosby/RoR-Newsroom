@@ -4,4 +4,6 @@ class Role < ApplicationRecord
 
   validates :role, presence: true
   validates :role, uniqueness: true
+
+  # TODO return employees by role
 end

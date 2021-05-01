@@ -1,0 +1,36 @@
+<nav class="navbar has-background-link-light " role="navigation" aria-label="main navigation" style="z-index: 10">
+  <div class="navbar-brand">
+
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="navbar-menu is-active">
+    <div class="navbar-start">
+      <%= link_to "Workspace Home", workspace_employee_path(session[:employee_id]), class: "navbar-item" %>
+      <%= link_to "All Drafts", workspace_articles_path, class: "navbar-item" %>
+      <%= link_to "All Staff", workspace_employees_path, class: "navbar-item" %>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <%= link_to "Tag Management", workspace_tags_path, class: "navbar-item" %>
+          <%= link_to "Show Workflow Roles", workspace_roles_path, class: "navbar-item" %>
+          <hr class="navbar-divider">
+          <%= link_to "Create new idea/pitch", new_workspace_article_path, class: "navbar-item" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+    </div>
+
+  </div>
+</nav>

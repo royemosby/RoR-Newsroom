@@ -12,6 +12,9 @@
 
   <body class="m-4">
     <%= render "layouts/header" %>
+    <% if session[:employee_id] %>
+      <%= render "layouts/workspace_menu" %>
+    <% end %>
     <div class="container"><%= yield %></div>
   </body>
 </html>

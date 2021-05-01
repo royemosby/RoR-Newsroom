@@ -7,32 +7,31 @@ RSpec.describe Employee, type: :model do
       DatabaseCleaner.clean
     end
 
+    
+    it "must have a username" do
+      @employee = Employee.create(first_name: "NoLast", last_name: "NoFirst", password: "pw")
+      expect(@employee.valid?).to be false
+      
+      @employee = Employee.create(username: "something", first_name: "NoLast", last_name: "NoFirst", password: "pw")
+      expect(@employee.valid?).to be true
+    end
+    
     it "must have a password" do
       @employee = Employee.create(first_name: "no", last_name: "pw")
       expect(@employee.valid?).to be false
     end
-
-    xit "must have a first name" do
-      @employee = Employee.create(last_name: "NoFirst", password: "pw")
-      expect(@employee.valid?).to be false
-    end
-
-    xit "must have a last name" do
-      @employee = Employee.create(first_name: "NoLast", password: "pw")
-      expect(@employee.valid?).to be false
-    end
-
+    
   end
 
   describe "ACTIONS UPON" do
 
     before(:all) do
       DatabaseCleaner.clean
-      @employee = Employee.create!(first_name: "Firsty", last_name: "McLasty", password: "password")
+      @employee = Employee.create!(username: "un", first_name: "Firsty", last_name: "McLasty", password: "password")
       roles = ["create", "approve", "assign", "edit", "review", "publish"]
       roles.each { |r| Role.create!(role: r)}
       @roles = Role.all
-      @unassigned_article = Article.create(title: "Unassigned", content: "Some content")
+      @unassigned_article = Article.create(title: "Unassigned", content: Faker::Lorem.paragraphs(number: 2).join)
     end
 
     it "can be assigned roles" do
@@ -54,7 +53,7 @@ RSpec.describe Employee, type: :model do
 
     before(:all) do
       DatabaseCleaner.clean
-      @employee = Employee.create!(first_name: "Firsty", last_name: "McLasty", password: "password")
+      @employee = Employee.create!(username: "un", first_name: "Firsty", last_name: "McLasty", password: "password")
       roles = ["create", "approve", "assign", "edit", "review", "publish"]
       roles.each { |r| Role.create!(role: r)}
       @roles = Role.all

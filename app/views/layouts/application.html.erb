@@ -12,6 +12,7 @@
 
   <body class="m-4">
     <%= render "layouts/header" %>
+    <%= render "layouts/messages" %>
     <% if session[:employee_id] %>
       <%= render "layouts/workspace_menu" %>
     <% end %>

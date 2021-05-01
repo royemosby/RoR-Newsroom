@@ -7,7 +7,7 @@ class Article < ApplicationRecord
   has_many :article_tags
   has_many :tags, through: :article_tags
 
-  validates :title, length: {minimum: 2}
+  validates :title, length: {minimum: 3}
   validate :content_length_min_ten_words
 
   scope :published_articles, -> {where("status IS ?", "published")}

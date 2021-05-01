@@ -1,9 +1,9 @@
 #employees
-sr_editor = Employee.create!(first_name: "deborah", last_name: "smith", title: "Senior Editor", password: "password")
-editor = Employee.create!(first_name: "roy", last_name: "mosby", title: "chief editor", password: "password")
-journalist = Employee.create!(first_name: "samantha", last_name: "croix", title: "journalist at large", password: "password")
-journalist_2 = Employee.create!(first_name: "levon", last_name: "johnson", title: "journalist at large", password: "password")
-intern = Employee.create!(first_name: "larry", last_name: "grotch", title: "newsroom intern", password: "password")
+sr_editor = Employee.create!(username: "d_smith", first_name: "deborah", last_name: "smith", title: "Senior Editor", password: "password")
+editor = Employee.create!(username: "roy_boy",first_name: "roy", last_name: "mosby", title: "chief editor", password: "password")
+journalist = Employee.create!(username: "sam_croy", first_name: "samantha", last_name: "croix", title: "journalist at large", password: "password")
+journalist_2 = Employee.create!(username: "levon_j", first_name: "levon", last_name: "johnson", title: "journalist at large", password: "password")
+intern = Employee.create!(username: "gotcha_22", first_name: "larry", last_name: "grotch", title: "newsroom intern", password: "password")
 
 #content prep for articles
 def fake_content

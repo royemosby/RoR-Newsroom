@@ -1,5 +1,7 @@
 class Workspace::TagsController < ApplicationController
 
+  before_action :logged_on
+
   #TODO verify logon before deleting tags
   def index
     @tags = Tag.all

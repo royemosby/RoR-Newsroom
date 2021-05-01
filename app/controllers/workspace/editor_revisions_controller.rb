@@ -1,6 +1,7 @@
 class Workspace::EditorRevisionsController < ApplicationController
 
   #TODO consider grouping editor revisions by editor and article. Could scope.
+  before_action :logged_on
 
   def index
     if params[:article_id]

@@ -5,6 +5,7 @@ class Workspace::ArticlesController < ApplicationController
   #TODO Add in tags (csv with find_or_create_by)
   #TODO If article has editor_revisions, show them
   before_action :find_article, only: [:show, :edit, :update]
+  before_action :logged_on
 
   def index
     if params[:employee_id]

@@ -5,6 +5,7 @@ class StaffController < ApplicationController
   end
 
   def show
-    @staff_member = Employee.find_by(params[:id])
+    #byebug
+    @staff_member = Employee.find(params[:id])
   end
 end

@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   def new
     if session[:employee_id]
       @employee = Employee.find_by(id: session[:employee_id])
-      redirect_to workspace_employee_path(@employee), alert: "You are already logged on."
+      redirect_to workspace_employee_path(@employee), notice: "You are already logged on."
     else
       @employee = Employee.new
     end
@@ -12,12 +12,15 @@ class SessionsController < ApplicationController
   #strong params for create action
   def create
     if params.has_key? :username
-      @employee = Employee.find_by(username: params[:username])
-      if @employee.authenticate(params[:password])
-        session[:employee_id] = @employee.id
-        redirect_to workspace_employee_path(@employee)
+      if @employee = Employee.find_by(username: params[:username])
+        if @employee.authenticate(params[:password])
+          session[:employee_id] = @employee.id
+          redirect_to workspace_employee_path(@employee), success: "Welcome, #{@employee.first_name}"
+        else
+          redirect_to "/login", alert: "Username and password did not match."
+        end
       else
-        redirect_to "/login", alert: "Username and password did not match."
+        redirect_to"/login", alert: "Username and password did not match."
       end
     else
       #if params[:username] does not exist, assume GH login
@@ -28,9 +31,9 @@ class SessionsController < ApplicationController
       end
       session[:employee_id] = @employee.id
       if @employee.first_name.nil? || @employee.last_name.nil?
-        redirect_to edit_workspace_employee_path(@employee), alert: "Please complete your account registration form"
+        redirect_to edit_workspace_employee_path(@employee), notice: "Please complete your account registration form"
       else
-        redirect_to workspace_employee_path(@employee), alert: "Welcome, #{@employee.first_name}"
+        redirect_to workspace_employee_path(@employee), success: "Welcome, #{@employee.first_name}"
       end
     end
 
@@ -39,7 +42,7 @@ class SessionsController < ApplicationController
   def destroy
     if session[:employee_id]
       session.delete :employee_id
-      redirect_to "/"
+      redirect_to "/", notice: "Successfully logged out."
     end
   end
 
@@ -49,5 +52,14 @@ class SessionsController < ApplicationController
     request.env['omniauth.auth']
   end
 
+  def current_user
+    @employee = Employee.find_by(id: session[employee_id])
+  end
+
+  def logged_on
+    unless current_user
+      redirect_to "/"
+    end
+  end
 
 end

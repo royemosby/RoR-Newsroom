@@ -36,7 +36,6 @@
       <div class="navbar-item">
         <div class="buttons">
           <% if session[:employee_id] %>
-          <%= link_to "Workspace", workspace_employee_path(session[:employee_id]), class: "button is-primary" %>
             <%= link_to "Log Out", logout_path, method: :post, class: "button is-light" %>
           <% else %>  
             <%= link_to "Staff Login", login_path, class: "button is-light" %>

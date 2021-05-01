@@ -1,3 +1,2 @@
-<h1 class="title"><%= @staff_member.first_name %> <%= @staff_member.last_name %></h1>
-<h1 class="title"><%= @staff_member.gh_name %></h1>
+<h1 class="title"><%= full_name(@staff_member)%></h1>
 <h2>Articles to their name: <%= @staff_member.articles.count %></h2>

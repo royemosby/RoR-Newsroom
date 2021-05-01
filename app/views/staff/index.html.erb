@@ -1,4 +1,4 @@
 <h1 class="title">RoR Newsroom Staff</h1>
 <% @staff.each do |staff_member| %>
-  <h2><%= link_to staff_member.first_name, staff_path(staff_member) %></h2>
+  <h2><%= link_to full_name(staff_member), staff_path(staff_member) %></h2>
 <% end %>

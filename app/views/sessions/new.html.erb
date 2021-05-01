@@ -1,2 +1,17 @@
 <h1 class="title">login</h1>
 <%= link_to 'Log in with GitHub', '/auth/github', method: :post, class: "button"%>
+<br>
+<br>
+<h2>Or log in with username/password</h2>
+<%= form_tag "/login" do %>
+<div class="control">
+  <%= label_tag "Username" %>
+  <%= text_field_tag :'username' %>
+<div class="control">
+    <%= label_tag "Password" %>
+    <%= password_field_tag :password %>
+</div>
+
+</div>
+<%= submit_tag :"Log in" %>
+<% end %>

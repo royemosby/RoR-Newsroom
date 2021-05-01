@@ -25,18 +25,31 @@ class Workspace::EmployeesController < ApplicationController
   end
 
   def edit
-    #TODO edit employee only if self
-    @employee = Employee.find_by(id: params[:id])
+    if session[:employee_id] != params[:id]
+      redirect_to workspace_employees_path, alert: "You do not have permission to edit that account."
+    end
   end
 
   #TODO Allow for password changes while logged in (OAuth accts have fake)
   def update
-    @employee = Employee.find_by(id: params[:id])
-    
+    if params[:id] == session[:employee_id].to_s
+      @employee.update(employee_params)
+      if @employee.save
+        redirect_to workspace_employee_path(@employee)
+      else
+        render edit, alert: "Your updates were not saved. See form below for more."
+      end
+    else
+      redirect_to workspace_employees_path, alert: "You do not have permission to edit that account."
+    end
   end
 
   def find_employee
     @employee = Employee.find(params[:id])
+  end
+
+  def self_modify
+    
   end
 
   def employee_params

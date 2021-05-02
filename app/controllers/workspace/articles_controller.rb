@@ -10,7 +10,7 @@ class Workspace::ArticlesController < ApplicationController
     if params[:employee_id]
       @articles = Employee.find(params[:employee_id]).articles
     else
-      @articles = Article.all
+      @articles = Article.by_status
     end
   end
   
@@ -54,7 +54,7 @@ class Workspace::ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :status, :employee_id)
+    params.require(:article).permit(:title, :content, :status, :employee_id, tag_ids: [])
   end
 
 end

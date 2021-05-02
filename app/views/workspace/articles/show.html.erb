@@ -1,6 +1,6 @@
 <h1 class="title"><%= @article.title %></h1>
 <% if @article.employee %>
-  <h2><%= @article.employee.first_name %></h2>
+  <h2 class="title is-5"><%= full_name(@article.employee) %></h2>
   <% else %>
   <h2>No author assigned</h2>
 <% end %>
@@ -8,4 +8,16 @@
   <%= @article.content %>
 </div>
 <br>
+<% if @article.editor_revisions %>
+  <% @article.editor_revisions.each do |revision| %>
+    <div>
+      <h2 class="title is-5">Editorial Revision Comment:</h2>
+      <h2 class="title is-5">Left by: <%= full_name(revision.reviewer) %></h2>
+      <div><%= revision.content %></div>
+    </div>
+    <hr>
+  <% end %>
+  
+<% end %>
 <%= link_to "Edit this article", edit_workspace_article_path(@article), class: "button is-link" %>
+<%= link_to "Add Editor Revision", new_workspace_article_editor_revision_path(@article), class: "button is-link"%>

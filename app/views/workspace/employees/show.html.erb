@@ -1,3 +1,14 @@
-<h1><%= @employee.first_name %> <%= @employee.last_name %></h1>
-<h1><%= @employee.gh_name %></h1>
-<h2>Articles to their name: <%= @employee.articles.count %></h2>
+<h1 class="title"><%= @employee.first_name %> <%= @employee.last_name %></h1>
+<h2 class="title is-6 is-italic">AKA "<%= @employee.username %>"</h2>
+<h2 class="title is-4">Published Articles Count: <%= @employee.published_articles.count %></h2>
+<h2 class="title is-4">Drafts</h2>
+<ul>
+  <% @employee.drafts.each do |draft| %>
+    <h3 class="title is-5"><%= draft.title %></h3>
+    <p><%= excerpt(draft) %></p>
+    <% if session[:employee_id] == @employee.id %>
+      <%= link_to "Edit", edit_workspace_article_path(draft) %>
+    <% end %>
+    <hr>
+  <% end %>
+</ul>

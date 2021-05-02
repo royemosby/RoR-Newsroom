@@ -14,4 +14,8 @@ class Tag < ApplicationRecord
       errors.add(:tag, "Cannot create an empy tag")
     end
   end
+
+  def published_articles
+    articles.filter { |a| a.status == "published"}
+  end
 end

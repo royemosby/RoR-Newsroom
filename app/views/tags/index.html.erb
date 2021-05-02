@@ -1,4 +1,8 @@
 <h1 class="title">All tags</h1>
 <% @tags.each do |tag| %>
-  <p><%= tag.tag %></p>
+  <h2 class="title is-4">
+    <%= tag.tag %>
+  </h2>
+    <%= link_to " Articles with this tag: #{tag.articles.count}", tag_news_index_path(tag) %>
+    <hr>
 <% end %>

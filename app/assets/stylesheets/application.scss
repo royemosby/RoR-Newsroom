@@ -14,3 +14,15 @@
  *= require_self
  */
 @import "bulma";
+
+.field_with_errors label{
+    background-color: #ffc1ce;
+    color: #f14668;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.field_with_errors input{
+    color: #f14668;
+    outline: 2px solid #f14668
+}

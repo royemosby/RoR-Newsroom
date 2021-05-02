@@ -22,7 +22,12 @@
     padding: 0 10px;
 }
 
-.field_with_errors input{
+.field_with_errors input, .field_with_errors textarea{
     color: #f14668;
     outline: 2px solid #f14668
+}
+
+#error_explanation {
+    color: #f14668;
+    font-weight: bold;
 }

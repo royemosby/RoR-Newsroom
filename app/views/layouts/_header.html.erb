@@ -11,16 +11,16 @@
 
   <div class="navbar-menu">
     <div class="navbar-start">
-      <%= link_to "Home", "/", class: "navbar-item" %>
-      <%= link_to "RoR Newsroom Team", staff_index_path, class: "navbar-item" %>
-
+      <%= link_to "Recent Articles", "/", class: "navbar-item" %>
+      <%= link_to "Tags", tags_path, class: "navbar-item" %>
+      
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           More
         </a>
 
         <div class="navbar-dropdown">
-          <%= link_to "Tags", tags_path, class: "navbar-item" %>
+          <%= link_to "RoR Newsroom Team", staff_index_path, class: "navbar-item" %>
           <a class="navbar-item">
             About RoR Newsroom
           </a>

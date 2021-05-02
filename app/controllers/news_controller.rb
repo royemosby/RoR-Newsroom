@@ -1,8 +1,13 @@
 class NewsController < ApplicationController
 
-  #TODO Static helper to handle ABOUT and SUBMIT A LEAD
   def index
-    @articles = Article.published_articles
+    if params[:tag_id]
+      tag = Tag.find_by(id: params[:tag_id])
+      @articles = tag.published_articles
+      #byebug
+    else
+      @articles = Article.status_published
+    end
   end
 
   def show

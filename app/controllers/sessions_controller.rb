@@ -1,3 +1,5 @@
+require "securerandom"
+
 class SessionsController < ApplicationController
 
   def new
@@ -27,7 +29,7 @@ class SessionsController < ApplicationController
       @employee = Employee.find_or_create_by(gh_uid: auth['uid']) do |e|
         e.username = auth['info']['nickname']
         e.gh_email = auth['info']['email']
-        e.password = ENV['OAUTH_USER_PASS'] #TODO change to secure_random
+        e.password = SecureRandom.base64(12)
       end
       session[:employee_id] = @employee.id
       if @employee.first_name.nil? || @employee.last_name.nil?

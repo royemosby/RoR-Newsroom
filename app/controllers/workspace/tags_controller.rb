@@ -2,7 +2,8 @@ class Workspace::TagsController < ApplicationController
 
   before_action :logged_on
 
-  #TODO verify logon before deleting tags
+  #TODO delete buttons for tags
+  #TODO show usage stats
   def index
     @tags = Tag.all
   end

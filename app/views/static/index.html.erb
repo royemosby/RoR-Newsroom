@@ -1,0 +1,76 @@
+<p><%= image_tag "ror_newsroom.svg" %></p>
+<br><br>
+<h2 class="title is-4">TOC</h2>
+<div class="content">
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#install">How to install (on local system) *requires GitHub OAuth</a></li>
+    <li><a href="#contribute"></a></li>
+    <li>License</li>
+  </ul>
+</div>
+<br>
+<h2 class="title is-4" id="about">About RoR Newsroom</h2>
+
+<p>RoR Newsroom as a platform focuses on the publishing workflow found in a multi-person, news-producing venture. Using an <a href="https://en.wikipedia.org/wiki/Role-based_access_control">RBAC-like</a> approach, each user is assigned various roles (authorizations) that allow them to perform individual tasks found in a news publishing lifecycle. Since this is a school project, I kept the workflow and the authorizations relatively simple. I am using the following workflow to model the behavior of RoR Newsroom:</p>
+
+<div class="content">
+  <ol>
+  <li>New idea or a pitch</li>
+  <li>Approval to proceed</li>
+  <li>Assignment of an idea to an author</li>
+  <li>Working draft</li>
+  <li>Editorial review of draft (and sent back to step 4 if revisions are needed)</li>
+  <li>Publish live news article</li>
+  <li>The platform also allows for updates to be attached to published articles.</li>
+  </ol>
+</div>
+
+<p><%= image_tag "Article-Lifecycle.jpeg" %></p>
+
+<p>Distilled, the authorizations include:</p>
+
+<div class="content">
+  <ul>
+    <li>Create</li>
+    <li>Approve</li>
+    <li>Assign</li>
+    <li>Edit (includes revise)</li>
+    <li>Review</li>
+    <li>Publish</li>
+    <li>Update</li>
+  </ul>
+</div>
+
+<p>Since users often perform more than one task in the course of a workflow, they can be assigned several authorizations from which to work. For example, an editor can approve, assign, review, and publish an article. This precludes them from creating new articles or directly editing them (feedback is provided through review notes that reference the article draft)</p>
+<br>
+<h2 class="title is-4" id="install">How to install (on local system)</h2>
+
+<div class="content">
+  <ol>
+    <li>Download or clone this repo.</li>
+    <li>Open terminal to the top level directory of this project and type <code>bundle install</code></li>
+    <li>Type <code>rails db:migrate</code> to install the sqlite database (will be found at ./db/development.sqlite3)</li>
+    <li>Populate database with demo content by typing <code>rails db:seed</code>.</li>
+    <li>Register a new OAuth app with Github at <a href="https://github.com/settings/developers">developer settings</a>
+    <ol><li>Go to link above then click on the OAuth Apps vertical tab.</li>
+    <li>Click "New OAuth App"</li>
+    <li>Give it a meaningful name like "RoR Newsroom"</li>
+    <li>Set the homepage URL to <code>http://localhost:3000/</code></li>
+    <li>Set the Authorization callback URL to <code>http://localhost:3000/auth/github/callback</code></li>
+    <li>Fill in the rest of the information as you deem fit.</li></ol></li>
+    <li>Start the rails server by typing <code>rails s</code></li>
+    <li>Open <code>localhost:3000</code> in a new browser window and start interacting with RoR Newsroom!</li>
+  </ol>
+</div>
+
+<h2 class="title is-4" id="contribute">Contributor's guide</h2>
+
+<p>Bottom line: I will be a kind human. Please be the same in return.</p>
+
+<p>Please submit a contribution idea through an issue ticket before working on a pull request. Don't submit a pull request unless it has been discussed through an issue ticket. I happily respond to all contructive inquiries.</p>
+
+<p>As this project evolves, I will update this readme and how contributions are accepted.</p>
+
+<h2>This project uses the <a href="https://opensource.org/licenses/MIT" target="_blank">standard MIT license</a></h2>
+

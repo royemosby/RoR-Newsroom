@@ -2,7 +2,7 @@ class Workspace::EmployeesController < ApplicationController
 
   #TODO Employee actions: new, create, update, destroy
   before_action :find_employee, only: [:show, :edit, :update]
-  before_action :logged_on
+  before_action :logged_on, except: [:new, :create]
 
   def index
     @employees = Employee.all
@@ -19,9 +19,10 @@ class Workspace::EmployeesController < ApplicationController
   def create
     @employee = Employee.new(employee_params)
     if @employee.save
+      session[:employee_id] = @employee.id
       redirect_to workspace_employee_path(@employee), alert: "Account created."
     else
-      render new_workspace_employee, alert: "Account not created. Fix errrors below."
+      render "new", alert: "Account not created. Fix errrors below."
     end
   end
 
@@ -31,7 +32,6 @@ class Workspace::EmployeesController < ApplicationController
     end
   end
 
-  #TODO Allow for password changes while logged in (OAuth accts have fake)
   def update
     if params[:id] == session[:employee_id].to_s
       @employee.update(employee_params)
@@ -50,9 +50,7 @@ class Workspace::EmployeesController < ApplicationController
   end
 
   def employee_params
-    params.require(:employee).permit(:first_name, :last_name, :password, :title, :gh_name, :gh_email)
-  end
-
-  
+    params.require(:employee).permit(:first_name, :last_name, :password, :title, :gh_name, :gh_email, :username)
+  end  
 
 end

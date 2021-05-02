@@ -13,6 +13,10 @@ def fake_title
   Faker::Company.bs
 end
 
+def pub_date
+  Faker::Date.between(from: '2019-09-23', to: '2021-04-30')
+end
+
 #articles: new
 Article.create!(title: "This one is unassigned", content: fake_content)
 Article.create!(title: "this one is assigned", employee_id: journalist.id, content: fake_content)
@@ -30,7 +34,7 @@ Article.create!(title: "Article for review #2", employee_id: journalist_2.id, co
 # articles: published
 10.times do |i| 
   j = [journalist, journalist_2]
-  Article.create!(title: fake_title, employee: j[i%2], content: fake_content, status: "published" )
+  Article.create!(title: fake_title, employee: j[i%2], content: fake_content, status: "published", published_date: pub_date )
 end
 
 #editor_revision, article status edit
@@ -39,7 +43,7 @@ EditorRevision.create!(content: "Please update article title per meeting", revie
 
 #article_update
 
-has_update = Article.create!(title: "Published article. Has update", content: fake_content, employee_id: journalist.id, status: "published")
+has_update = Article.create!(title: "Published article. Has update", content: fake_content, employee_id: journalist.id, status: "published", published_date: pub_date)
 ArticleUpdate.create!(content: "Nostrum did not lorem that day.", article_id: has_update.id, updater_id: intern.id)
 
 
@@ -71,5 +75,5 @@ tags = ["rails", "ruby", "gem", "hotfix", "internet", "ux", "community", "templa
 tags.each { |t| Tag.create!(tag: t)}
 
 #article_tags
-tagged_article = Article.create!(title: "Tagged article", content: fake_content, employee_id: journalist_2.id, status: "published")
+tagged_article = Article.create!(title: "Tagged article", content: fake_content, employee_id: journalist_2.id, status: "published", published_date: pub_date)
 tagged_article.tags << [Tag.first, Tag.second, Tag.third]

@@ -1,5 +1,16 @@
 <%= form_with model: [:workspace, @employee] do |f| %>
 
+<% if @employee.errors.any? %>
+    <div id="error_explanation">
+      <h2>There were some errors:</h2>
+      <ul>
+        <% @employee.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :username, class: "label" %>
     <%= f.text_field :username, class: "control" %>

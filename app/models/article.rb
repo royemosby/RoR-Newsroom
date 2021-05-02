@@ -12,11 +12,7 @@ class Article < ApplicationRecord
 
   scope :status_published, -> {where("status IS ?", "published").order(:published_date).reverse_order}
   scope :drafts, -> {where.not("status IS ?", "published")}
-
-  scope :status_new, -> {where("status IS ?", "new")}
-  scope :status_approved, -> {where("status IS ?", "approved")}
-  scope :status_edit, -> {where("status IS ?", "edit")}
-  scope :status_review, -> {where("status IS ?", "review")}
+  scope :by_status, -> {Article.drafts.order(:status)}
 
   def content_length_min_ten_words
     if content.present?

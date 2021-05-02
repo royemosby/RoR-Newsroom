@@ -1,9 +1,21 @@
 <h1 class="title"><%= @article.title %></h1>
 <% if @article.employee %>
-  <h2><%= @article.employee.first_name %></h2>
+  <h2>Written by <%= @article.employee.username %></h2>
+  <h2>Published <%= date_published(@article) %></h2>
+  <br>
+  <% if @article.article_updates%>
+    <% @article.article_updates.each do |update| %>
+      <div class="message is-info">
+        <h3 class="message-header">Updated <%= updated_date(update) %></h3>
+        <p class="message-body"><%= update.content %></p>
+
+      </div>
+    <% end %>
+  <% end %>
   <% else %>
   <h2>No author assigned</h2>
 <% end %>
 <div>
   <%= @article.content %>
 </div>
+<div><%= news_tag_list(@article) %></div>

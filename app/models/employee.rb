@@ -8,4 +8,16 @@ class Employee < ApplicationRecord
 
   validates :username, presence: true
   validates :username, uniqueness: true
+
+  def published_articles
+    self.articles.filter do |a|
+      a.status == "published"
+    end
+  end
+
+  def drafts
+    self.articles.filter do |a|
+      a.status != "published"
+    end
+  end
 end

@@ -1,4 +1,15 @@
 <%= form_with model: [:workspace, @article] do |f| %>
+
+<% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2 class="title is-5 has-text-danger">There were some errors:</h2>
+      <ul>
+        <% @article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.label :title, class: "label" %>
     <%= f.text_field :title, class: "control" %>

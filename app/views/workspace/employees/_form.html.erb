@@ -1,8 +1,8 @@
 <%= form_with model: [:workspace, @employee] do |f| %>
 
-<% if @employee.errors.any? %>
+  <% if @employee.errors.any? %>
     <div id="error_explanation">
-      <h2>There were some errors:</h2>
+      <h2 class="title is-5 has-text-danger">There were some errors:</h2>
       <ul>
         <% @employee.errors.full_messages.each do |message| %>
           <li><%= message %></li>

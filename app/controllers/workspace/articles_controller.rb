@@ -1,6 +1,5 @@
 class Workspace::ArticlesController < ApplicationController
 
-  #TODO Article actions: new, create, edit, update, destroy
   #TODO How to handle article publishing view?
   #TODO Add in tags (csv with find_or_create_by)
   #TODO If article has editor_revisions, show them
@@ -15,10 +14,12 @@ class Workspace::ArticlesController < ApplicationController
     end
   end
   
+  #TODO add more info to page (status, editor review comments, edit button(if assigned to params[:employee_id]))
   def show
     @article = Article.find_by(id: params[:id])
   end
 
+  #TODO build out form to include dropdowns for assignment and article status
   def new
     @article = Article.new
   end
@@ -34,9 +35,11 @@ class Workspace::ArticlesController < ApplicationController
     end
   end
 
+  #TODO determine edit capabilities (status field change, content, assigned to, etc)
   def edit
   end
 
+  #TODO set date_published if the article's status is updated to publish
   def update
     @article.update(article_params)
     if @article.save
@@ -51,7 +54,7 @@ class Workspace::ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :status)
+    params.require(:article).permit(:title, :content, :status, :employee_id)
   end
 
 end

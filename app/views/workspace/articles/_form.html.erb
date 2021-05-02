@@ -1,6 +1,6 @@
 <%= form_with model: [:workspace, @article] do |f| %>
 
-<% if @article.errors.any? %>
+  <% if @article.errors.any? %>
     <div id="error_explanation">
       <h2 class="title is-5 has-text-danger">There were some errors:</h2>
       <ul>
@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+
   <div class="field">
     <%= f.label :title, class: "label" %>
     <%= f.text_field :title, class: "control" %>
@@ -17,6 +18,10 @@
   <div class="field">
     <%= f.label :content, class: "label" %>
     <%= f.text_area :content, size: "100x30", class: "control" %>
+  </div>
+  <div class="field">
+    <%= f.label :tags, class: "label" %>
+    <%= f.collection_check_boxes :tag_ids, Tag.order(:tag), :id, :tag%>
   </div>
     <%= f.submit %>
 <% end %>

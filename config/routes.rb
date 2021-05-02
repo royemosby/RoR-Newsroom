@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   resources :news, only: [:index, :show]
   resources :staff, only: [:index, :show]
-  resources :tags, only: [:index, :show]
+  resources :tags, only: [:index, :show] do
+    resources :news, only: [:index]
+  end
   
   namespace :workspace do
     resources :articles do
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
     root to: "articles#index"
   end
   
+  get "/about", to: "static#index", as: "about"
   post "/logout", to: "sessions#destroy", as: "logout"
   get "/login", to: "sessions#new", as: "login"
   post "/login", to: "sessions#create", as: "username_pw_login"

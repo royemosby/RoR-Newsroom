@@ -1,8 +1,10 @@
-<h1 class="title">All Articles</h1>
+<h1 class="title">Recent Articles</h1>
 
 <% @articles.each do |article| %>
-  <h2><%= link_to article.title, news_path(article) %></h2>
-  <h3><%= link_to full_name(article.employee), staff_path(article.employee) %></h3>
+  <h2 class="title is-4"><%= link_to article.title, news_path(article) %></h2>
+  <h3 class="title is-5"><%= link_to full_name(article.employee), staff_path(article.employee) %></h3>
+  <h3><%= date_published(article) %></h3>
   <div><%= excerpt(article) %></div>
+  <div><%= news_tag_list(article) %></div>
   <hr>
 <% end %>

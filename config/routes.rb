@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   
   namespace :workspace do
     resources :articles do
-      resources :editor_revisions, only: [:index]
+      resources :editor_revisions, only: [:index, :create, :new, :edit, :update]
     end
     resources :article_updates
     resources :editor_revisions

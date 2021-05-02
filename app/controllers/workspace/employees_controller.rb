@@ -1,7 +1,6 @@
 class Workspace::EmployeesController < ApplicationController
 
-  #TODO Employee actions: new, create, update, destroy
-  before_action :find_employee, only: [:show, :edit, :update]
+  before_action :find_employee, only: [:show, :edit, :update, :destroy]
   before_action :logged_on, except: [:new, :create]
 
   def index
@@ -42,6 +41,14 @@ class Workspace::EmployeesController < ApplicationController
       end
     else
       redirect_to workspace_employees_path, alert: "You do not have permission to edit that account."
+    end
+  end
+
+  def destroy
+    if session[:employee_id] == @employee.id
+      @employee.destroy
+      session.delete :employee_id
+      redirect_to "/", notice: "Account has been removed."
     end
   end
 

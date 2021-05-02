@@ -7,4 +7,5 @@ class Employee < ApplicationRecord
   has_many :article_updates, foreign_key: :updater_id
 
   validates :username, presence: true
+  validates :username, uniqueness: true
 end

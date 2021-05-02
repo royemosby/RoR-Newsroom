@@ -1,17 +1,22 @@
-<h1 class="title">login</h1>
-<%= link_to 'Log in with GitHub', '/auth/github', method: :post, class: "button"%>
-<br>
-<br>
-<h2>Or log in with username/password</h2>
+<h1 class="title">Employee Login</h1>
+<h2 class="title is-4">Log in with username/password</h2>
 <%= form_tag "/login" do %>
-<div class="control">
-  <%= label_tag "Username" %>
-  <%= text_field_tag :'username' %>
-<div class="control">
-    <%= label_tag "Password" %>
-    <%= password_field_tag :password %>
-</div>
-
-</div>
-<%= submit_tag :"Log in" %>
+  <div class="field">
+    <%= label_tag "Username", nil, class: "label" %>
+    <%= text_field_tag :'username', nil, class: "control" %>
+    </div>
+  <div class="field">
+      <%= label_tag "Password", nil, class: "label" %>
+      <%= password_field_tag :password, nil, class: "control" %>
+  </div>
+  <%= submit_tag :"Log in", class: "button is-link" %>
 <% end %>
+<hr>
+<h2 class="title is-4"> Or choose from the options below:</h2>
+<br>
+<%= link_to 'Log in with GitHub', '/auth/github', method: :post, class: "button is-link"%>
+<br>
+<br>
+<div>
+<%= link_to "Create New Account", new_workspace_employee_path, class: "button is-link" %>
+</div>

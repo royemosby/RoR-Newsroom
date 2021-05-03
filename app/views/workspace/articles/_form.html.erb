@@ -23,5 +23,13 @@
     <%= f.label :tags, class: "label" %>
     <%= f.collection_check_boxes :tag_ids, Tag.order(:tag), :id, :tag%>
   </div>
+  <div class="field">
+    <%= f.label :status, class: "label" %>
+    <%= f.collection_select :status, ["new", "approved", "edit", "review", "published"] , :to_s, :to_s %>
+  </div>
+  <div class="field">
+    <%= f.label :employee, class:"label" %>
+    <%= f.collection_select :employee_id, Employee.all, :id, :username, include_blank: "Keep Unassigned" %>
+  </div>
     <%= f.submit %>
 <% end %>

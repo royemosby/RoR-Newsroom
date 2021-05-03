@@ -4,7 +4,6 @@ class NewsController < ApplicationController
     if params[:tag_id]
       tag = Tag.find_by(id: params[:tag_id])
       @articles = tag.published_articles
-      #byebug
     else
       @articles = Article.status_published
     end

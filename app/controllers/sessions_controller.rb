@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
     end
   end
 
-  #strong params for create action
   def create
     if params.has_key? :username
       if @employee = Employee.find_by(username: params[:username])

@@ -49,7 +49,7 @@ RSpec.describe Employee, type: :model do
 
   end
   
-  describe "PERFORM ACTIONS" do #TODO modify Employee PERFORMS ACTIONS spec section for authorizations
+  describe "PERFORM ACTIONS" do 
 
     before(:all) do
       DatabaseCleaner.clean

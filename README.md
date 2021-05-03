@@ -11,7 +11,7 @@
 
 ## About RoR Newsroom
 
-RoR Newsroom as a platform focuses on the publishing workflow found in a multi-person, news-producing venture. Using an [RBAC-like](https://en.wikipedia.org/wiki/Role-based_access_control) approach, each user is assigned various roles (authorizations) that allow them to perform individual tasks found in a news publishing lifecycle. Since this is a school project, I kept the workflow and the authorizations relatively simple. I am using the following workflow to model the behavior of RoR Newsroom:
+RoR Newsroom as a platform focuses on the publishing workflow found in a multi-person, news-producing venture. Since this is a school project, I kept the workflow and the authorizations very simple. There are anonymous users (without accounts), and employees( those with accounts). I am using the following workflow to model the behavior of RoR Newsroom:
 
 1. New idea or a pitch
 2. Approval to proceed
@@ -22,18 +22,6 @@ RoR Newsroom as a platform focuses on the publishing workflow found in a multi-p
 7. The platform also allows for updates to be attached to published articles.
 
 ![Article Lifecycle](README_assets/Article-Lifecycle.jpeg)
-
-Distilled, the authorizations include:
-
-- Create
-- Approve
-- Assign
-- Edit (includes revise)
-- Review
-- Publish
-- Update
-
-Since users often perform more than one task in the course of a workflow, they can be assigned several authorizations from which to work. For example, an editor can approve, assign, review, and publish an article. This precludes them from creating new articles or directly editing them (feedback is provided through review notes that reference the article draft)
 
 ## How to install (on local system)
 

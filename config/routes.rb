@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   
   namespace :workspace do
     resources :articles do
-      resources :editor_revisions, only: [:index, :create, :new, :edit, :update]
+      resources :editor_revisions, only: [:index, :show, :create, :new]
     end
     resources :article_updates
     resources :editor_revisions
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       resources :articles, only: [:index]
     end
     resources :roles, except: [:show]
-    resources :tags, only: [:index, :destroy]
+    resources :tags, only: [:index]
     root to: "articles#index"
   end
   

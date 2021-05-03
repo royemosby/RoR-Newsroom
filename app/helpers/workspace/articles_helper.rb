@@ -25,25 +25,4 @@ module Workspace::ArticlesHelper
     end
   end
 
-  # TODO get_tags is an untested method!!
-  def get_tags(article)
-    unless article.tags.empty?
-      article_tags = []
-      article.tags.each do |tag|
-        article_tags << tag.tag
-      end
-      article_tags.join(", ")
-    end
-
-  end
-
-  # TODO set_tags is an untested method!!
-  def set_tags(article, tag_string)
-    article.tags.
-    tags = tag_string.split(", ")
-    tags.each do |tag|
-      article << Tag.find_or_create_by(tag: tag)
-    end
-  end
-
 end

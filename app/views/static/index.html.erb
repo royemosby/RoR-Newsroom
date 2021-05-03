@@ -5,14 +5,14 @@
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#install">How to install (on local system) *requires GitHub OAuth</a></li>
-    <li><a href="#contribute"></a></li>
-    <li>License</li>
+    <li><a href="#contribute">Contribute</a></li>
+    <li><a href="#license">License</a></li>
   </ul>
 </div>
 <br>
 <h2 class="title is-4" id="about">About RoR Newsroom</h2>
 
-<p>RoR Newsroom as a platform focuses on the publishing workflow found in a multi-person, news-producing venture. Using an <a href="https://en.wikipedia.org/wiki/Role-based_access_control">RBAC-like</a> approach, each user is assigned various roles (authorizations) that allow them to perform individual tasks found in a news publishing lifecycle. Since this is a school project, I kept the workflow and the authorizations relatively simple. I am using the following workflow to model the behavior of RoR Newsroom:</p>
+<p>RoR Newsroom as a platform focuses on the publishing workflow found in a multi-person, news-producing venture. Since this is a school project, I kept the workflow and the authorizations very simple. There are anonymous users (without accounts), and employees( those with accounts). I am using the following workflow to model the behavior of RoR Newsroom:</p>
 
 <div class="content">
   <ol>
@@ -28,21 +28,6 @@
 
 <p><%= image_tag "Article-Lifecycle.jpeg" %></p>
 
-<p>Distilled, the authorizations include:</p>
-
-<div class="content">
-  <ul>
-    <li>Create</li>
-    <li>Approve</li>
-    <li>Assign</li>
-    <li>Edit (includes revise)</li>
-    <li>Review</li>
-    <li>Publish</li>
-    <li>Update</li>
-  </ul>
-</div>
-
-<p>Since users often perform more than one task in the course of a workflow, they can be assigned several authorizations from which to work. For example, an editor can approve, assign, review, and publish an article. This precludes them from creating new articles or directly editing them (feedback is provided through review notes that reference the article draft)</p>
 <br>
 <h2 class="title is-4" id="install">How to install (on local system)</h2>
 
@@ -65,12 +50,14 @@
 </div>
 
 <h2 class="title is-4" id="contribute">Contributor's guide</h2>
+<div class="content">
+<p><a href="https://github.com/egomadking/RoR-Newsroom" target="_blank">RoR Newsroom repo</a> can be found on HitHub.</p>
 
 <p>Bottom line: I will be a kind human. Please be the same in return.</p>
 
 <p>Please submit a contribution idea through an issue ticket before working on a pull request. Don't submit a pull request unless it has been discussed through an issue ticket. I happily respond to all contructive inquiries.</p>
 
 <p>As this project evolves, I will update this readme and how contributions are accepted.</p>
-
-<h2>This project uses the <a href="https://opensource.org/licenses/MIT" target="_blank">standard MIT license</a></h2>
+</div>
+<h2 class="title is-4" id="license">This project uses the <a href="https://opensource.org/licenses/MIT" target="_blank">standard MIT license</a></h2>
 

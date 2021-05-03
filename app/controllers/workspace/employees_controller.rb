@@ -19,7 +19,7 @@ class Workspace::EmployeesController < ApplicationController
     @employee = Employee.new(employee_params)
     if @employee.save
       session[:employee_id] = @employee.id
-      redirect_to workspace_employee_path(@employee), alert: "Account created."
+      redirect_to workspace_employee_path(@employee), success: "Account created."
     else
       render "new", alert: "Account not created. Fix errrors below."
     end

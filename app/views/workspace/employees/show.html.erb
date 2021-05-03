@@ -5,6 +5,7 @@
 <ul>
   <% @employee.drafts.each do |draft| %>
     <h3 class="title is-5"><%= draft.title %></h3>
+    <h3 class="title is-5">Status: <%= draft.status %></h3>
     <p><%= excerpt(draft) %></p>
     <% if session[:employee_id] == @employee.id %>
       <%= link_to "Edit", edit_workspace_article_path(draft) %>

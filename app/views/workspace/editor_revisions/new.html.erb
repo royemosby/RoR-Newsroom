@@ -1,12 +1,16 @@
 <h1 class="title">Editor Revision Form</h1>
-<h2>For article <%= @editor_revision.article.title %></h2>
+<h2 class="title is-4">For article: <%= @editor_revision.article.title %></h2>
 <%= form_with model: [:workspace, @editor_revision] do |f| %>
   <div class="field">
     <%= f.label :content, class: "label"  %>
-    <%= f.text_area :content, size: "100x30", class: "control" %>
+    <%= f.text_area :content, size: "100x10", class: "control" %>
   </div>
     <%= f.hidden_field :reviewer_id, value: session[:employee_id] %>
     <%= f.hidden_field :article_id, value: @editor_revision.article.id %>
-
   <%= f.submit %>
 <% end %>
+<hr>
+<h2 class="title is-4">Article Content:</h2>
+<div>
+  <%= @editor_revision.article.content %>
+</div>

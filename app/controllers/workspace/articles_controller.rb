@@ -1,8 +1,5 @@
 class Workspace::ArticlesController < ApplicationController
 
-  #TODO How to handle article publishing view?
-  #TODO Add in tags (csv with find_or_create_by)
-  #TODO If article has editor_revisions, show them
   before_action :find_article, only: [:show, :edit, :update]
   before_action :logged_on
 
@@ -14,18 +11,14 @@ class Workspace::ArticlesController < ApplicationController
     end
   end
   
-  #TODO add more info to page (status, editor review comments, edit button(if assigned to params[:employee_id]))
   def show
     @article = Article.find_by(id: params[:id])
   end
 
-  #TODO build out form to include dropdowns for assignment and article status
   def new
     @article = Article.new
   end
 
-  #TODO autoassign for journalists (has "edit", "assign" only to self auths)
-  #TODO author assignment dropdown for "create" auth
   def create
     @article = Article.create(article_params)
     if @article.save
@@ -35,13 +28,15 @@ class Workspace::ArticlesController < ApplicationController
     end
   end
 
-  #TODO determine edit capabilities (status field change, content, assigned to, etc)
   def edit
   end
 
-  #TODO set date_published if the article's status is updated to publish
   def update
+    old_status = Article.find_by(params[:id]).status
     @article.update(article_params)
+    if @article.status == "published" && old_status != "published"
+      @article.published_date = Time.now
+    end
     if @article.save
       redirect_to workspace_article_path(@article)
     else

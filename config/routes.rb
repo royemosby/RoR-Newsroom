@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :articles do
       resources :editor_revisions, only: [:index, :show, :create, :new]
     end
-    resources :article_updates
+    #resources :article_updates left in for future revision
     resources :editor_revisions
     resources :employees do
       resources :articles, only: [:index]

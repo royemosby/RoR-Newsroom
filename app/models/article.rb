@@ -10,10 +10,10 @@ class Article < ApplicationRecord
   validates :title, length: {minimum: 3}
   validate :content_length_min_ten_words
 
-  scope :status_published, -> {where("status IS ?", "published").order(:published_date).reverse_order}
-  scope :drafts, -> {where.not("status IS ?", "published")}
+  scope :status_published, -> {where("status = ?", "published").order(:published_date).reverse_order}
+  scope :drafts, -> {where.not("status = ?", "published")}
   scope :by_status, -> {Article.drafts.order(:status)}
-  scope :alpha_published, -> {where("status IS ?", "published").order("LOWER(title)")}
+  scope :alpha_published, -> {where("status = ?", "published").order("LOWER(title)")}
 
   def content_length_min_ten_words
     if content.present?

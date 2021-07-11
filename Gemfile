@@ -37,10 +37,12 @@ gem "bulma-rails", "~> 0.9.0"
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+#loads seeds in demo and development
+gem 'faker'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'faker'
   gem 'database_cleaner-active_record'
   gem 'rspec-rails'
 end
